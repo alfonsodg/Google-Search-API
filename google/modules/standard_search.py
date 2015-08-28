@@ -43,7 +43,7 @@ class GoogleResult:
 
 
 # PUBLIC
-def search(query, pages=1, lang='en'):
+def search(query, pages=1, lang='en', void=True):
     """Returns a list of GoogleResult.
 
     Args:
@@ -55,7 +55,7 @@ def search(query, pages=1, lang='en'):
 
     results = []
     for i in range(pages):
-        url = _get_search_url(query, i, lang=lang, void=True)
+        url = _get_search_url(query, i, lang=lang)
         html = get_html(url)
 
         if html:
