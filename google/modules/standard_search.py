@@ -55,7 +55,7 @@ def search(query, pages=1, lang='en'):
 
     results = []
     for i in range(pages):
-        url = _get_search_url(query, i, lang=lang)
+        url = _get_search_url(query, i, lang=lang, void=True)
         html = get_html(url)
 
         if html:
@@ -75,7 +75,9 @@ def search(query, pages=1, lang='en'):
                 res.description = _get_description(li)
                 res.thumb = _get_thumb()
                 res.cached = _get_cached(li)
-
+                if void is True:
+                    if res.description is None:
+                        continue
                 results.append(res)
                 j += 1
 
