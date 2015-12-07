@@ -96,9 +96,11 @@ def _get_name(li):
 
 def _get_link(li):
     """Return external link from a search."""
-
-    a = li.find("a")
-    link = a["href"]
+    try:
+        a = li.find("a")
+        link = a["href"]
+    except:
+        return None
 
     if link.startswith("/url?") or link.startswith("/search?"):
         return None
@@ -109,9 +111,11 @@ def _get_link(li):
 
 def _get_google_link(li):
     """Return google link from a search."""
-
-    a = li.find("a")
-    link = a["href"]
+    try:
+        a = li.find("a")
+        link = a["href"]
+    except:
+        return None
 
     if link.startswith("/url?") or link.startswith("/search?"):
         return urlparse.urljoin("http://www.google.com", link)
