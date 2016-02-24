@@ -62,15 +62,13 @@ def search(query, pages=1, lang='en', void=True):
 
         if html:
             soup = BeautifulSoup(html, "html.parser")
-            lis = soup.findAll("li", attrs={"class": "g"})
+            lis = soup.findAll("div", attrs={"class": "g"})
             
             j = 0
             for li in lis:
                 res = GoogleResult()
-
                 res.page = i
                 res.index = j
-
                 res.name = _get_name(li)
                 res.link = _get_link(li)
                 res.google_link = _get_google_link(li)
