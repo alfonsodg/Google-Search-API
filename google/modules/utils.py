@@ -30,8 +30,12 @@ def normalize_query(query):
 def _get_search_url(query, page=0, per_page=10, lang='en'):
     # note: num per page might not be supported by google anymore (because of
     # google instant)
-    params = {'hl': lang, 'q': query.encode(
-        'utf8'), 'start': page * per_page, 'num': per_page}
+    #print query
+    #print type(query)
+    #params = {'hl': lang, 'q': query.decode(
+    #    'utf8'), 'start': page * per_page, 'num': per_page}
+    params = {'hl': lang, 'q': query, 'start': page * per_page, 'num': per_page}
+    #print params
     params = urlencode(params)
     url = u"http://www.google.com/search?" + params
     # return u"http://www.google.com/search?hl=%s&q=%s&start=%i&num=%i" %
